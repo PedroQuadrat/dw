@@ -4,3 +4,7 @@
     h1 {
         color:brown;
     }
+    p {
+        margin-left:20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
