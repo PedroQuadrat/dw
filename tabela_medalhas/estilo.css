@@ -1,0 +1,21 @@
+table{
+    border: 1px solid rgb(249, 3, 3);
+    width: 50%;
+    
+}
+
+td{
+    border: 3px solid rgb(20, 181, 193);
+    background-color: rgb(147, 167, 12);
+    border-radius: 10px; padding: 10px;
+}
+
+th{
+    border: 3px solid blueviolet;
+    background-color: rgb(14, 141, 126);
+    border-radius: 10px;
+}
+
+h1{
+    color: crimson;
+}
