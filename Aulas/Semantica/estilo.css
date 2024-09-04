@@ -1,0 +1,59 @@
+body{
+    background-color: grey;
+    padding: 0px;
+    margin: 0px;
+}
+
+header{
+    border: 1px solid red;
+    padding: 20px;
+    margin: 20px;
+    background-color: maroon;
+}
+
+nav{
+    border: 1px solid red;
+    padding: 20px;
+    margin: 20px;
+    background-color: yellowgreen;
+}
+
+article{
+    border: 1px solid red;
+    padding: 20px;
+    margin: 20px;
+    background-color:slateblue ;
+}
+
+section{
+    border: 1px solid red;
+    padding: 20px;
+    margin: 20px;
+    background-color:khaki;
+}
+
+footer{
+    border: 1px solid red;
+    padding: 20px;
+    margin: 20px;
+    background-color: plum;
+}
+div{
+    background-color: aqua;
+    width: 300px;
+    margin: auto;
+    padding: 10px;
+}
+
+.texto{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.title{
+    color: red;
+}
+
+#negrito{
+    font-weight: bolder;
+}
