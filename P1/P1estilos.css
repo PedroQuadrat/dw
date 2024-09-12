@@ -1,0 +1,32 @@
+html{
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body{
+    margin: 0;
+}
+
+header{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+    background-color: greenyellow;
+    height: 5vh;
+    padding: 1em;
+    font-size: 1em;
+}
+
+#casa{
+    color: brown;
+    display: block;
+    text-decoration: none;
+    
+}
+
+.flex-gallery{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    background-color: aqua;
+}
