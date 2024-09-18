@@ -1,0 +1,13 @@
+body{
+    background-color: grey;
+    max-width: 1400px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    margin: 0;
+}
+
+a{
+    text-decoration:none;
+}
+
