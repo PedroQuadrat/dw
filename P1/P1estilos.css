@@ -8,20 +8,38 @@ body{
 
 header{
     display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
     align-items: center;
     background-color: greenyellow;
-    height: 5vh;
-    padding: 1em;
-    font-size: 1em;
+    width:100%;
+    padding: 6px 5%;
 }
 
-#casa{
+@media (max-width: 430px) {
+    header{
+        width: 34em;
+    }
+}
+
+img{
+    height: 150px;
+    width: 150px;
+}
+
+#casa,#sobre,#serviços,#contato{
     color: brown;
     display: block;
     text-decoration: none;
     
+}
+
+.box{
+    text-align: center;
+    font-size: 4vh;
+    width: 200vh;
+    border: solid 3px;
+    padding: 6px;
+    margin: 3px;
+    background-color: aqua;
 }
 
 .flex-gallery{
