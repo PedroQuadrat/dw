@@ -4,14 +4,58 @@ html{
 }
 body{
     margin: 0;
+    background-color: #594236;
 }
 
 header{
     display: flex;
-    align-items: center;
-    background-color: greenyellow;
-    width:100%;
+    text-align: center;
+    justify-content: center;
+    background-color: #6F584B;
+    width: 90vw;
     padding: 6px 5%;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    background-color: #4C191B;
+    margin-top: -9px;
+    width: 100vw;
+    border: 2px solid;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: inline-block;
+}
+
+article{
+    background-color: #755C1B;
+    width: 100vw;
+    border: 2px solid;
+}
+
+h2, p{
+    font-size: 1.3em;
+    text-align: center;
+}
+
+p{
+    color: white;
+}
+
+#colab{
+    text-align: center;
+    color: white;
 }
 
 @media (max-width: 430px) {
@@ -21,30 +65,56 @@ header{
 }
 
 img{
+    display: block;
+    border: 3px solid;
+    box-shadow: 2px 2px 2px;
     height: 150px;
     width: 150px;
 }
 
-#casa,#sobre,#serviços,#contato{
-    color: brown;
-    display: block;
-    text-decoration: none;
-    
+#logo{
+    border: none;
+    box-shadow: none;
 }
 
-.box{
-    text-align: center;
-    font-size: 4vh;
-    width: 200vh;
-    border: solid 3px;
-    padding: 6px;
-    margin: 3px;
-    background-color: aqua;
+#colaboradores{
+    width: 30vw;
+    height: 55vh;
 }
 
 .flex-gallery{
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
-    background-color: aqua;
+    background-color: #0C0A3E;
+    width: 100vw;
+    border: 2px solid;
+}
+
+figcaption{
+    color: #F3C677;
+}
+
+.grid-layout{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2vw;
+}
+
+.grid-layout > div{
+    background: #B33F62;
+    border: 3px solid;
+    font-size: 1em;
+    text-align: center;
+    padding: .3em;
+}
+
+footer{
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+    background-color:#6F584B;
+    width: 100vw;
+    border: 3px solid;
 }
