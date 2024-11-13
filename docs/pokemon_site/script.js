@@ -16,7 +16,7 @@ document.getElementById('pokemon-form').addEventListener('submit', async (event)
     } else {
         document.getElementById('pokemon-data').innerHTML = '<p>Pokémon não encontrado</p>';
     }
-});
+});/*eu acho q tem algo a ver com documento by id tem q ser igual ao da api pelo visto*/
 
 document.getElementById('pokemon-type').addEventListener('submit', async (event) => {
     event.preventDefault();
