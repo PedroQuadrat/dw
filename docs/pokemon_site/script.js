@@ -17,3 +17,20 @@ document.getElementById('pokemon-form').addEventListener('submit', async (event)
         document.getElementById('pokemon-data').innerHTML = '<p>Pokémon não encontrado</p>';
     }
 });
+
+document.getElementById('pokemon-type').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const type = document.getElementById('pokemon-type').value.toLowerCase();
+    const response = await fetch(`https:https://pokeapi.co/api/v2/type/${type}`);
+    const info = await response.json();
+
+    if (response.ok) {
+        const data = await response.json();
+        document.getElementById('pokemon-info').innerHTML = `
+            <h2>${data.name}</h2>
+            <img src="${data.sprites.front}" alt="${data.name}">
+        `;
+    } else {
+        document.getElementById('pokemon-info').innerHTML = '<p>Tipo não encontrado</p>';
+    }
+});
