@@ -1,10 +1,12 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokémon Search</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <h1>Pokémon Search</h1>
     <form id="pokemon-form">
@@ -14,14 +16,26 @@
     <div id="pokemon-data"></div>
 
     <script src="script.js"></script>
-   
+
     <h1>Poke-type</h1>
-    <form id="pokemon-type">
-        <input type="text" id="pokemon-type" placeholder="Enter pokemon type" required>
+    <form id="pokemon-type-form">
+        <input type="text" id="pokemon-type-input" placeholder="Enter pokemon type" required>
         <button type="submit">Search</button>
     </form>
     <div id="pokemon-info"></div>
 
     <script src="script.js"></script>
+
+    <h1>Poke-Region</h1>
+    <form id="pokemon-region-form">
+        <select id="pokemon-region-select" required>
+            <option value="" disabled selected>Selecione uma região</option>
+        </select>
+        <button type="submit">Buscar</button>
+    </form>
+    <div id="pokemon-region"></div>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
