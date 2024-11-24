@@ -101,41 +101,87 @@ document
     }
 })();
 
-document.getElementById('pokemon-region-form').addEventListener('submit', async (event) => {
-    event.preventDefault();
+document.getElementById("pokemon-region-form").addEventListener("submit", async (event) => {
+  event.preventDefault();
 
-    const region = document.getElementById('pokemon-region-select').value;
-    document.getElementById('pokemon-region').innerHTML = `<p>Carregando...</p>`;
+  const region = document.getElementById("pokemon-region-select").value;
+  document.getElementById("pokemon-region").innerHTML = "";
 
-    try {
-        const response = await fetch(`https://pokeapi.co/api/v2/region`);
-        if (!response.ok) throw new Error("Erro ao buscar regiões");
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/region`);
+    if (!response.ok) throw new Error("Erro ao buscar regiões");
 
-        const regions = await response.json();
-        const selectedRegion = regions.results.find(r => r.name === region);
-        if (!selectedRegion) throw new Error("Região não encontrada");
+    const regions = await response.json();
+    const selectedRegion = regions.results.find((r) => r.name === region);
+    if (!selectedRegion) throw new Error("Região não encontrada");
 
-        const regionResponse = await fetch(selectedRegion.url);
-        if (!regionResponse.ok) throw new Error("Erro ao buscar dados da região");
+    const regionResponse = await fetch(selectedRegion.url);
+    if (!regionResponse.ok) throw new Error("Erro ao buscar dados da região");
 
-        const regionData = await regionResponse.json();
-        const generationUrl = regionData.main_generation.url;
+    const regionData = await regionResponse.json();
+    const generationUrl = regionData.main_generation.url;
 
-        const generationResponse = await fetch(generationUrl);
-        if (!generationResponse.ok) throw new Error("Erro ao buscar dados da geração");
+    const generationResponse = await fetch(generationUrl);
+    if (!generationResponse.ok) throw new Error("Erro ao buscar dados da geração");
 
-        const generationData = await generationResponse.json();
-        const pokemonList = generationData.pokemon_species;
+    const generationData = await generationResponse.json();
+    const pokemonList = generationData.pokemon_species;
 
+    const pokemonHtml = pokemonList
+      .map((p) => {
+        const id = p.url.split("/").slice(-2, -1)[0];
+        const frontImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
 
-        const pokemonHtml = pokemonList.map(p => `<li>${p.name}</li>`).join('');
-        document.getElementById('pokemon-region').innerHTML = `
-            <h2>Pokémon da região ${region.charAt(0).toUpperCase() + region.slice(1)}</h2>
-            <ul style="list-style-type: none; padding: 0;">
-                ${pokemonHtml}
+        return `
+          <li data-url="https://pokeapi.co/api/v2/pokemon/${id}" class="pokemon-item">
+              <img src="${frontImage}" alt="${p.name}" width="100">
+              <p>${p.name}</p>
+          </li>`;
+      })
+      .join("");
+
+    document.getElementById("pokemon-region").innerHTML = `
+      <h2>Pokémon da região ${region.charAt(0).toUpperCase() + region.slice(1)}</h2>
+      <ul>${pokemonHtml}</ul>`;
+
+    // Adiciona o evento de clique em cada Pokémon
+    document.querySelectorAll(".pokemon-item").forEach((item) => {
+      item.addEventListener("click", async () => {
+        const pokemonUrl = item.getAttribute("data-url");
+
+        try {
+          const response = await fetch(pokemonUrl);
+          if (!response.ok) throw new Error("Erro ao buscar detalhes do Pokémon");
+
+          const data = await response.json();
+
+          // Exibir detalhes do Pokémon
+          document.getElementById("pokemon-region").innerHTML = `
+            <h2>${data.name.charAt(0).toUpperCase() + data.name.slice(1)}</h2>
+            <img src="${data.sprites.front_default}" alt="${data.name}">
+            <p><strong>Tipo(s):</strong> ${data.types.map((t) => t.type.name).join(", ")}</p>
+            <p><strong>Habilidades:</strong> ${data.abilities.map((a) => a.ability.name).join(", ")}</p>
+            <p><strong>Altura:</strong> ${data.height / 10} m</p>
+            <p><strong>Peso:</strong> ${data.weight / 10} kg</p>
+            <p><strong>Estatísticas base:</strong></p>
+            <ul>
+              ${data.stats
+                .map((stat) => `<li>${stat.stat.name}: ${stat.base_stat}</li>`)
+                .join("")}
             </ul>
-        `;
-    } catch (error) {
-        document.getElementById('pokemon-region').innerHTML = `<p>${error.message}</p>`;
-    }
+            <button id="back-button">Voltar</button>
+          `;
+
+          // Botão de voltar
+          document.getElementById("back-button").addEventListener("click", () => {
+            document.getElementById("pokemon-region-form").dispatchEvent(new Event("submit"));
+          });
+        } catch (error) {
+          document.getElementById("pokemon-region").innerHTML = `<p>${error.message}</p>`;
+        }
+      });
+    });
+  } catch (error) {
+    document.getElementById("pokemon-region").innerHTML = `<p>${error.message}</p>`;
+  }
 });
